@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npx create-react-app:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(wc:*)",
+      "Bash(lsof -ti:5000)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(docker --version)",
+      "Bash(systemctl status:*)",
+      "Bash(service mongod:*)",
+      "Bash(mongod --version)"
+    ]
+  }
+}
