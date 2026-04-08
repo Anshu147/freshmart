@@ -30,6 +30,22 @@ const statusColors = {
   cancelled: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
 };
 
+// Modal wrapper
+const Modal = ({ show, onClose, title, children }) => {
+  if (!show) return null;
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-dark-card rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold dark:text-white">{title}</h2>
+          <button onClick={onClose}><FiX size={24} className="dark:text-white" /></button>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('products');
   const token = localStorage.getItem('token');
@@ -210,22 +226,6 @@ export default function AdminDashboard() {
       toast.success('Status updated');
       fetchOrders();
     } catch { toast.error('Failed'); }
-  };
-
-  // Modal wrapper
-  const Modal = ({ show, onClose, title, children }) => {
-    if (!show) return null;
-    return (
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white dark:bg-dark-card rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold dark:text-white">{title}</h2>
-            <button onClick={onClose}><FiX size={24} className="dark:text-white" /></button>
-          </div>
-          {children}
-        </div>
-      </div>
-    );
   };
 
   return (
